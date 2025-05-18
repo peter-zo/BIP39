@@ -1,3 +1,5 @@
-build
-out
-.gradle/
+.project
+.classpath
+/.settings/
+/bin/
+/target/
