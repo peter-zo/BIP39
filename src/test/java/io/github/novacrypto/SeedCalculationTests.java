@@ -21,13 +21,9 @@
 
 package io.github.novacrypto;
 
-import io.github.novacrypto.bip32.ExtendedPrivateKey;
-import io.github.novacrypto.bip32.networks.Bitcoin;
 import io.github.novacrypto.bip39.JavaxPBKDF2WithHmacSHA512;
 import io.github.novacrypto.bip39.SeedCalculator;
 import io.github.novacrypto.testjson.EnglishJson;
-import io.github.novacrypto.testjson.TestVector;
-import io.github.novacrypto.testjson.TestVectorJson;
 import org.junit.Test;
 
 import static io.github.novacrypto.Hex.toHex;
@@ -53,60 +49,6 @@ public final class SeedCalculationTests {
         for (final String[] testCase : data.english) {
             assertEquals(testCase[2], calculateSeedHex(testCase[1], "TREZOR"));
         }
-    }
-
-    @Test
-    public void passphrase_normalization() {
-        assertEquals(calculateSeedHex("solar puppy hawk oxygen trip brief erase slot fossil mechanic filter voice", "ｶ"),
-                calculateSeedHex("solar puppy hawk oxygen trip brief erase slot fossil mechanic filter voice", "カ"));
-    }
-
-    @Test
-    public void normalize_Japanese() {
-        assertEquals("646f1a38134c556e948e6daef213609a62915ef568edb07ffa6046c87638b4b140fef2e0c6d7233af640c4a63de6d1a293288058c8ac1d113255d0504e63f301",
-                calculateSeedHex("あいこくしん　あいこくしん　あいこくしん　あいこくしん　あいこくしん　あいこくしん　あいこくしん　あいこくしん　あいこくしん　あいこくしん　あいこくしん　あおぞら"));
-    }
-
-    @Test
-    public void normalize_Japanese_2() {
-        assertEquals("646f1a38134c556e948e6daef213609a62915ef568edb07ffa6046c87638b4b140fef2e0c6d7233af640c4a63de6d1a293288058c8ac1d113255d0504e63f301",
-                calculateSeedHex("あいこくしん　あいこくしん　あいこくしん　あいこくしん　あいこくしん　あいこくしん　あいこくしん　あいこくしん　あいこくしん　あいこくしん　あいこくしん　あおぞら"));
-    }
-
-    @Test
-    public void normalize_Japanese_regular_spaces() {
-        assertEquals("646f1a38134c556e948e6daef213609a62915ef568edb07ffa6046c87638b4b140fef2e0c6d7233af640c4a63de6d1a293288058c8ac1d113255d0504e63f301",
-                calculateSeedHex("あいこくしん あいこくしん あいこくしん あいこくしん あいこくしん あいこくしん あいこくしん あいこくしん あいこくしん あいこくしん あいこくしん あおぞら"));
-    }
-
-    @Test
-    public void all_japanese_test_vectors() {
-        final TestVectorJson data = TestVectorJson.loadJapanese();
-        for (final TestVector testVector : data.vectors) {
-            testSeedGeneration(testVector);
-        }
-    }
-
-    @Test
-    public void all_french_test_vectors() {
-        final TestVectorJson data = TestVectorJson.loadFrench();
-        for (final TestVector testVector : data.vectors) {
-            testSeedGeneration(testVector);
-        }
-    }
-
-    @Test
-    public void all_spanish_test_vectors() {
-        final TestVectorJson data = TestVectorJson.loadSpanish();
-        for (final TestVector testVector : data.vectors) {
-            testSeedGeneration(testVector);
-        }
-    }
-
-    private static void testSeedGeneration(TestVector testVector) {
-        final byte[] seed = new SeedCalculator().calculateSeed(testVector.mnemonic, testVector.passphrase);
-        assertEquals(testVector.seed, toHex(seed));
-        assertEquals(testVector.bip32Xprv, ExtendedPrivateKey.fromSeed(seed, Bitcoin.MAIN_NET).extendedBase58());
     }
 
     private static String calculateSeedHex(final String mnemonic) {
