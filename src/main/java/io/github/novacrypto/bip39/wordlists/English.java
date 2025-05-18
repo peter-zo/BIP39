@@ -30,8 +30,8 @@ public enum English implements WordList {
     INSTANCE;
 
     @Override
-    public String getWord(final int index) {
-        return words[index];
+    public String getWord(int index) {
+        return WORDS[index];
     }
 
     @Override
@@ -39,7 +39,7 @@ public enum English implements WordList {
         return ' ';
     }
 
-    private final static String[] words = new String[]{
+    private static final String[] WORDS = new String[]{
             "abandon",
             "ability",
             "able",

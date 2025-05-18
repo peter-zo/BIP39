@@ -25,6 +25,7 @@ import io.github.novacrypto.bip39.wordlists.English;
 import io.github.novacrypto.bip39.wordlists.French;
 import io.github.novacrypto.bip39.wordlists.Japanese;
 import io.github.novacrypto.bip39.wordlists.Spanish;
+
 import org.junit.Test;
 
 import java.text.Normalizer;

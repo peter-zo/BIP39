@@ -47,7 +47,7 @@ import static org.junit.Assert.assertEquals;
 public final class SeedCalculationFromWordListTests {
 
     @Test
-    public void bip39_english() {
+    public void bip39_english_12() {
         assertEquals("2eea1e4d099089606b7678809be6090ccba0fca171d4ed42c550194ca8e3600cd1e5989dcca38e5f903f5c358c92e0dcaffc9e71a48ad489bb868025c907d1e1",
                 calculateSeedHex("solar puppy hawk oxygen trip brief erase slot fossil mechanic filter voice", ""));
     }
@@ -69,9 +69,15 @@ public final class SeedCalculationFromWordListTests {
     }
 
     @Test
-    public void bip39_english_with_passphrase() {
-        assertEquals("36732d826f4fa483b5fe8373ef8d6aa3cb9c8fb30463d6c0063ee248afca2f87d11ebe6e75c2fb2736435994b868f8e9d4f4474c65ee05ac47aad7ef8a497846",
-                calculateSeedHex("solar puppy hawk oxygen trip brief erase slot fossil mechanic filter voice", "CryptoIsCool"));
+    public void bip39_english_24_with_passphrase() {
+        assertEquals("5d8c1818d266a7a5b43dda5d1b3353cb1d1c5bcc60f304d7191a3e91ab06cd2e8f2a544fada9a5c0d7610d82dceebacede8e4018cfbe559cdb8ad26811f2e09d",
+                calculateSeedHex("head ability wait earn mosquito final spatial enforce tape usage flash taste door birth author common people wasp unable pretty grocery sort chimney dynamic", "CryptoIsCool"));
+    }
+
+    @Test
+    public void bip39_english_24_without_passphrase() {
+        assertEquals("f4e634b4fa1c3435e3cead8d8c9c9969854f9a7e22d2e2e4a1092c8de3c2b252ab8a98a7fd8d159ec64132f2e3b5b974592b3f156f3aef64249697141ed68fb9",
+                calculateSeedHex("head ability wait earn mosquito final spatial enforce tape usage flash taste door birth author common people wasp unable pretty grocery sort chimney dynamic", ""));
     }
 
     @Test

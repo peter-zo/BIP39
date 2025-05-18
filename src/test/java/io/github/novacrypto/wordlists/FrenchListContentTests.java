@@ -43,7 +43,6 @@ public final class FrenchListContentTests {
                 WordListHashing.hashWordListNormalized(wordList));
     }
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void correctNumberOfWords() {
         wordList.getWord(WORD_COUNT + 1);

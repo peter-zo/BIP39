@@ -21,6 +21,7 @@
 
 package io.github.novacrypto.bip39.Validation;
 
+@SuppressWarnings("serial")
 public final class InvalidWordCountException extends Exception {
     public InvalidWordCountException() {
         super("Not a correct number of words");

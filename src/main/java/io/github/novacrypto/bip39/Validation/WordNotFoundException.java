@@ -21,6 +21,7 @@
 
 package io.github.novacrypto.bip39.Validation;
 
+@SuppressWarnings("serial")
 public final class WordNotFoundException extends Exception {
     private final CharSequence word;
     private final CharSequence suggestion1;

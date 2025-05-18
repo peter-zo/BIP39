@@ -41,11 +41,11 @@ public final class SeedCalculator {
     }
 
     /**
-     * Creates a seed calculator using {@link SpongyCastlePBKDF2WithHmacSHA512} which is the most compatible.
+     * Creates a seed calculator using {@link JavaxPBKDF2WithHmacSHA512} which is the most compatible.
      * Use {@link SeedCalculator#SeedCalculator(PBKDF2WithHmacSHA512)} to supply another.
      */
     public SeedCalculator() {
-        this(SpongyCastlePBKDF2WithHmacSHA512.INSTANCE);
+        this(JavaxPBKDF2WithHmacSHA512.INSTANCE);
     }
 
     /**
